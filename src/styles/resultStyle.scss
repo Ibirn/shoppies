@@ -1,0 +1,23 @@
+.search-result {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+  height: 10vh;
+  margin: 5px;
+  width: auto;
+
+  img {
+    display: block;
+    max-width: 230px;
+    max-height: 95px;
+    width: auto;
+    height: auto;
+  }
+
+  span {
+    display: flex;
+    width: 100%;
+    padding: 0px 10px;
+    justify-content: space-between;
+  }
+}

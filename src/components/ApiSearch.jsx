@@ -9,12 +9,13 @@ export default function ApiSearch(props) {
   const [results, setResults] = useState([]);
   // console.log(process.env);
 
+  //query OMDB, search restricted to movies.
   const dbSearch = (e) => {
     e.preventDefault();
     console.log();
     axios
       .get(
-        `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDB_KEY}&s=${query}`
+        `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDB_KEY}&s=${query}&type=movie`
       )
       .then((response) => setResults(response.data.Search));
   };
