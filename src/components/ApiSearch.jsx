@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import ResultItem from "./ResultItem";
 
 export default function ApiSearch(props) {
   //set default query to empty
@@ -15,7 +16,7 @@ export default function ApiSearch(props) {
       .get(
         `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDB_KEY}&s=${query}`
       )
-      .then((response) => setResults(response.data));
+      .then((response) => setResults(response.data.Search));
   };
 
   return (
@@ -32,6 +33,9 @@ export default function ApiSearch(props) {
             required
           ></input>
           <button onClick={(e) => dbSearch(e)}>Search</button>
+          {results.map((elem, ind) => (
+            <ResultItem key={ind} info={elem} />
+          ))}
         </div>
       </form>
     </div>
