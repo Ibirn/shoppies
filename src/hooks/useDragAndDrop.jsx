@@ -2,20 +2,24 @@ import { useEffect, useState } from "react";
 
 export default function useDragAndDrop(props) {
   const [nominations, setNominations] = useState({
-    1: {},
-    2: {},
-    3: {},
-    4: {},
-    5: {},
+    nomination1: {},
+    nomination2: {},
+    nomination3: {},
+    nomination4: {},
+    nomination5: {},
   });
 
   console.log("D&D loaded", props);
 
   let dragSource = null;
 
+  useEffect(() => {
+    console.log("RC: ", props.results);
+  }, [props.results]);
+
   function handleDragStart(e) {
     dragSource = this;
-    e.dataTransfer.effectAllowed = "move";
+    e.dataTransfer.effectAllowed = "copy";
     e.dataTransfer.setData("text/html", this.innerHTML);
     console.log("DS: ", this);
   }
@@ -24,7 +28,7 @@ export default function useDragAndDrop(props) {
     if (e.preventDefault) {
       e.preventDefault();
     }
-    e.dataTransfer.dropEffect = "move";
+    e.dataTransfer.dropEffect = "copy";
     // console.log("DO: ", this);
     return false;
   }
@@ -33,7 +37,7 @@ export default function useDragAndDrop(props) {
     console.log("HD DS: ", dragSource);
     console.log("HD TH: ", this);
     if (dragSource !== this && dragSource !== null) {
-      dragSource.innerHTML = this.innerHTML;
+      // dragSource.innerHTML = this.innerHTML;
       this.innerHTML = e.dataTransfer.getData("text/html");
     }
   }

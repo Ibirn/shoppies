@@ -1,10 +1,10 @@
-.search-result {
+.nomination-choice {
   display: flex;
   justify-content: space-between;
   border: 1px solid black;
   height: 10vh;
   margin: 5px;
-  width: auto;
+  width: 100%;
 
   img {
     display: block;
@@ -17,7 +17,7 @@
   span {
     display: flex;
     width: 100%;
-    min-width: 200px;
+    min-width: 250px;
     padding: 0px 10px;
     justify-content: space-between;
   }

@@ -1,32 +1,33 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import ResultItem from "./ResultItem";
+import ResultItems from "./ResultItems";
 import useDragAndDrop from "../hooks/useDragAndDrop";
+import Selections from "./Selections";
+import "../styles/mainStyle.scss";
 
 export default function ApiSearch(props) {
   //set default query to empty
   //http://www.omdbapi.com/?apikey=${REACT_APP_OMDB_KEY}&
-  let data = "bepid";
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
-  const { nominations, setNominations } = useDragAndDrop(query);
-
-  // console.log(process.env);
-
+  const { nominations, setNominations } = useDragAndDrop({
+    results,
+    setResults,
+  });
   //query OMDB, search restricted to movies.
   const dbSearch = (e) => {
     e.preventDefault();
-    console.log();
     axios
       .get(
         `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDB_KEY}&s=${query}&type=movie`
       )
       .then((response) => setResults(response.data.Search));
   };
+  console.log("RESULTS: ", results);
 
   return (
-    <div>
-      <form action="" method="get" className="form-example">
+    <div className="container">
+      <form method="get" className="search-form">
         <div className="search-form">
           <label>Search OMDB: </label>
           <input
@@ -38,21 +39,18 @@ export default function ApiSearch(props) {
             required
           ></input>
           <button onClick={(e) => dbSearch(e)}>Search</button>
-          <div className="results-list">
-            {results.map((elem, ind) => (
-              <ResultItem key={ind} info={elem} />
-            ))}
-          </div>
-          <div className="nominations">
-            <div draggable={true} className="slot">
-              Bmanmans
-            </div>
-            <div draggable={true} className="slot">
-              Spidermans
-            </div>
-          </div>
         </div>
       </form>
+      <div className="container lists">
+        <div className="results-list">
+          {results.map((elem, ind) => (
+            <ResultItems key={ind} info={elem} />
+          ))}
+        </div>
+        <div className="nominations">
+          <Selections choices={nominations} />
+        </div>
+      </div>
     </div>
   );
 }
