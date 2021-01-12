@@ -23,7 +23,7 @@ export default function ApiSearch(props) {
       )
       .then((response) => setResults(response.data.Search));
   };
-  console.log("RESULTS: ", results);
+  console.log("NOMI: ", nominations);
 
   return (
     <div className="container">
@@ -44,11 +44,15 @@ export default function ApiSearch(props) {
       <div className="container lists">
         <div className="results-list">
           {results.map((elem, ind) => (
-            <ResultItems key={ind} info={elem} />
+            <ResultItems key={ind} index={ind} info={elem} />
           ))}
         </div>
-        <div className="nominations">
-          <Selections choices={nominations} />
+        <div className="nominations" id="drop-zone">
+          {nominations.length > 0
+            ? nominations.map((elem, ind) => (
+                <Selections key={ind} choice={elem} />
+              ))
+            : null}
         </div>
       </div>
     </div>

@@ -7,4 +7,10 @@
     flex-direction: row;
     width: 100%;
   }
+
+  #drop-zone {
+    background-color: aqua;
+    min-width: 200px;
+    min-height: 200px;
+  }
 }
