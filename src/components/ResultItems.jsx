@@ -1,15 +1,18 @@
 import React from "react";
 import "../styles/resultStyle.scss";
 
-export default function ResultItem({ info, index }) {
-  // console.log("PROPS: ", info);
+export default function ResultItem({ info, index, setNominations }) {
+  console.log(setNominations);
   return (
-    <div className="search-result slot" id={`${index}-result`} draggable={true}>
-      <img src={info.Poster} alt={`${info.Title}-poster`}></img>
-      <span>
-        <h3>{info.Title}</h3>
-        <p>{info.Year}</p>
-      </span>
+    <div className="search-result slot">
+      <div className="item">
+        <img src={info.Poster} alt={`${info.Title}-poster`}></img>
+        <div className="title">{info.Title}</div>
+        <div className="year">{info.Year}</div>
+        <button onClick={() => setNominations((prev) => [info, ...prev])}>
+          +
+        </button>
+      </div>
     </div>
   );
 }

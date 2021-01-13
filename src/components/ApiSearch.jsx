@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ResultItems from "./ResultItems";
-import useDragAndDrop from "../hooks/useDragAndDrop";
 import Selections from "./Selections";
 import "../styles/mainStyle.scss";
 
@@ -10,10 +9,7 @@ export default function ApiSearch(props) {
   //http://www.omdbapi.com/?apikey=${REACT_APP_OMDB_KEY}&
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
-  const { nominations, setNominations } = useDragAndDrop({
-    results,
-    setResults,
-  });
+  const [nominations, setNominations] = useState([]);
   //query OMDB, search restricted to movies.
   const dbSearch = (e) => {
     e.preventDefault();
@@ -44,13 +40,18 @@ export default function ApiSearch(props) {
       <div className="container lists">
         <div className="results-list">
           {results.map((elem, ind) => (
-            <ResultItems key={ind} index={ind} info={elem} />
+            <ResultItems
+              key={ind}
+              index={ind}
+              info={elem}
+              setNominations={setNominations}
+            />
           ))}
         </div>
         <div className="nominations" id="drop-zone">
           {nominations.length > 0
             ? nominations.map((elem, ind) => (
-                <Selections key={ind} choice={elem} />
+                <Selections key={ind} index={ind} choice={elem} />
               ))
             : null}
         </div>

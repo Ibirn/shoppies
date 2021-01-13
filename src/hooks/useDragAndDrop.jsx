@@ -50,11 +50,18 @@ export default function useDragAndDrop(props) {
     return false;
   }
 
+  const handleNominations = (ind1, ind2) => {
+    let copy = [...nominations];
+    copy.splice(ind1, 1);
+    copy.splice(ind2, 0, nominations[ind1]);
+    setNominations(() => [...copy]);
+  };
+
   function handleDrop(e) {
     if (dragSource !== this && dragSource !== null) {
       if (dragSwap && dragSource.className.includes("nomination-choice")) {
-        dragSource.innerHTML = this.innerHTML;
-        this.innerHTML = e.dataTransfer.getData("text/html");
+        handleNominations(dragSource.id[0], dragSwap.id[0]);
+
         e.stopPropagation();
       } else {
         setNominations((prev) => [
@@ -73,6 +80,7 @@ export default function useDragAndDrop(props) {
     let items = document.querySelectorAll(".slot");
     let dropZone = document.getElementById("drop-zone");
     let nominees = document.querySelectorAll(".nomination-choice");
+
     //give each item listeners for drag
     items.forEach((item) => {
       item.addEventListener("dragstart", handleDragStart);
