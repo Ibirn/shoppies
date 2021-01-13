@@ -6,7 +6,7 @@ import "../styles/mainStyle.scss";
 
 export default function ApiSearch(props) {
   //set default query to empty
-  //http://www.omdbapi.com/?apikey=${REACT_APP_OMDB_KEY}&
+
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [nominations, setNominations] = useState([]);
@@ -19,7 +19,6 @@ export default function ApiSearch(props) {
       )
       .then((response) => setResults(response.data.Search));
   };
-  console.log("NOMI: ", nominations);
 
   return (
     <div className="container">
@@ -51,7 +50,13 @@ export default function ApiSearch(props) {
         <div className="nominations" id="drop-zone">
           {nominations.length > 0
             ? nominations.map((elem, ind) => (
-                <Selections key={ind} index={ind} choice={elem} />
+                <Selections
+                  key={ind}
+                  index={ind}
+                  choice={elem}
+                  setNominations={setNominations}
+                  nominations={nominations}
+                />
               ))
             : null}
         </div>
