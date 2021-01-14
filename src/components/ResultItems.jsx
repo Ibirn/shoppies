@@ -8,7 +8,7 @@ export default function ResultItem({
   nominations,
 }) {
   let disableButton;
-  if (nominations.includes(info)) {
+  if (nominations.includes(info) || nominations.length >= 5) {
     disableButton = true;
   }
   return (

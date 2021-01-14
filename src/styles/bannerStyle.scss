@@ -1,0 +1,27 @@
+.banner {
+  position: absolute;
+  top: 20vh;
+  z-index: 10;
+  image-rendering: pixelated;
+  width: 100%;
+  animation: fadeIn ease 2s;
+
+  img {
+    width: 80%;
+  }
+  .modal {
+    background-color: red;
+    top: 20vh;
+    height: 10vh;
+    width: 10vh;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

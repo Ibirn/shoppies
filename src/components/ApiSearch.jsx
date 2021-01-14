@@ -2,15 +2,18 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ResultItems from "./ResultItems";
 import Selections from "./Selections";
+import Banner from "./Banner";
 import "../styles/mainStyle.scss";
 
 export default function ApiSearch(props) {
   //set default query to empty
-
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [nominations, setNominations] = useState([]);
+  const [banner, setBanner] = useState(false);
+
   //query OMDB, search restricted to movies.
+  //catch errors
   const dbSearch = (e) => {
     e.preventDefault();
     axios
@@ -20,8 +23,20 @@ export default function ApiSearch(props) {
       .then((response) => setResults(response.data.Search));
   };
 
+  const dismissBanner = () => {
+    setBanner(false);
+  };
+
+  useEffect(() => {
+    if (nominations.length >= 5) {
+      setBanner(true);
+      document.addEventListener("click", dismissBanner);
+    }
+  }, [nominations]);
+
   return (
     <div className="container">
+      {banner ? <Banner /> : null}
       <form method="get" className="search-form">
         <div>
           <label>Search OMDB: </label>
