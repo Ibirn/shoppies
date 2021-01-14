@@ -1,7 +1,16 @@
 import React from "react";
 import "../styles/resultStyle.scss";
 
-export default function ResultItem({ info, index, setNominations }) {
+export default function ResultItem({
+  info,
+  index,
+  setNominations,
+  nominations,
+}) {
+  let disableButton;
+  if (nominations.includes(info)) {
+    disableButton = true;
+  }
   return (
     <div className="search-result slot">
       <div className="item">
@@ -11,12 +20,13 @@ export default function ResultItem({ info, index, setNominations }) {
         {/* <button onClick={() => setNominations((prev) => [info, ...prev])}>
           +
         </button> */}
-        <div
-          className="add-button"
+        <button
+          disabled={disableButton ? true : false}
+          className={`add-button`}
           onClick={() => setNominations((prev) => [info, ...prev])}
         >
           +
-        </div>
+        </button>
       </div>
     </div>
   );

@@ -1,16 +1,42 @@
 .container {
   display: flex;
   flex-direction: column;
+  border: 1px solid violet;
 
   .lists {
+    border: 1px solid green;
     display: flex;
     flex-direction: row;
-    width: 100%;
+    border-radius: 2rem;
+    justify-content: space-evenly;
+    flex-flow: wrap;
+
+    header {
+      width: 100%;
+      display: flex;
+      flex-flow: wrap;
+      justify-content: space-around;
+    }
   }
 
-  #drop-zone {
-    background-color: aqua;
-    min-width: 200px;
-    min-height: 200px;
+  .search-form {
+    margin-bottom: 2rem;
+    border-radius: 2rem;
+  }
+
+  .results-list {
+    min-height: 1rem;
+    border: 1px solid red;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    flex: 1;
+  }
+
+  .nominations {
+    min-height: 1rem;
+    border: 1px solid blue;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    flex: 1;
   }
 }

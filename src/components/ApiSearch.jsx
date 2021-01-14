@@ -23,10 +23,12 @@ export default function ApiSearch(props) {
   return (
     <div className="container">
       <form method="get" className="search-form">
-        <div className="search-form">
+        <div>
           <label>Search OMDB: </label>
           <input
-            type="text"
+            type="search"
+            placeholder="Search"
+            results="0"
             onChange={(e) => {
               setQuery(e.target.value);
             }}
@@ -36,7 +38,11 @@ export default function ApiSearch(props) {
           <button onClick={(e) => dbSearch(e)}>Search</button>
         </div>
       </form>
-      <div className="container lists">
+      <div className="lists">
+        <header>
+          <h4>Results</h4>
+          <h4>Nominations</h4>
+        </header>
         <div className="results-list">
           {results.map((elem, ind) => (
             <ResultItems
@@ -44,10 +50,11 @@ export default function ApiSearch(props) {
               index={ind}
               info={elem}
               setNominations={setNominations}
+              nominations={nominations}
             />
           ))}
         </div>
-        <div className="nominations" id="drop-zone">
+        <div className="nominations">
           {nominations.length > 0
             ? nominations.map((elem, ind) => (
                 <Selections
