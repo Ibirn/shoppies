@@ -8,7 +8,7 @@ export default function Banner(props) {
         <img
           id="shoppies-banner"
           alt="shoppies-banner"
-          src="images/shoppies.png"
+          src="images/shoppies-graphic.png"
         />
         <div className="modal-text">Thank you for your nominations!</div>
       </div>

@@ -36,14 +36,11 @@ export default function ApiSearch(props) {
     if (nominations.length === 5) {
       setBanner(true);
       document.addEventListener("click", dismissBanner);
-      // console.log(banner, nominations.length >= 5);
     }
     return () => {
       document.removeEventListener("click", dismissBanner);
     };
   }, [nominations]);
-
-  console.log(nominations);
 
   return (
     <div className="container">

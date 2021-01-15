@@ -1,9 +1,13 @@
 .banner {
+  display: table;
   position: absolute;
-  top: 20vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: auto;
   z-index: 10;
   image-rendering: pixelated;
-  width: 100%;
+  // width: 100%;
   animation: fadeIn ease 2s;
 
   img {
@@ -11,11 +15,9 @@
   }
 
   .modal {
-    display: flex;
+    display: table-cell;
     flex-direction: column;
     align-items: center;
-  }
-  .modal-text {
     background-color: #e3e3e3;
     width: 60%;
     border: 1px solid grey;
@@ -26,6 +28,17 @@
     height: 10rem;
     padding: 1rem;
   }
+  // .modal-text {
+  //   background-color: #e3e3e3;
+  //   width: 60%;
+  //   border: 1px solid grey;
+  //   border-radius: 25px;
+  //   position: relative;
+  //   top: -5rem;
+  //   z-index: -10;
+  //   height: 10rem;
+  //   padding: 1rem;
+  // }
 }
 
 @keyframes fadeIn {
