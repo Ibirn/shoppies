@@ -7,8 +7,7 @@ export default function Selections({
   setNominations,
   nominations,
 }) {
-  console.log("SELEC: ", choice);
-
+  //remove a nomination
   const removeNomination = () => {
     let copyArr = [...nominations];
     copyArr.splice(index, 1);

@@ -4,7 +4,9 @@ import ApiSearch from "./components/ApiSearch";
 function App() {
   return (
     <div className="App">
-      <h3>The Shoppies!</h3>
+      <h3>
+        <i class="fas fa-film"></i> The Shoppies <i class="fas fa-film"></i>
+      </h3>
       <ApiSearch />
     </div>
   );

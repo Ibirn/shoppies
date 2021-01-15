@@ -13,7 +13,6 @@ export default function ApiSearch(props) {
   const [banner, setBanner] = useState(false);
 
   //query OMDB, search restricted to movies.
-  //catch errors
   const dbSearch = (e) => {
     e.preventDefault();
     if (query === "") {
@@ -23,10 +22,12 @@ export default function ApiSearch(props) {
         .get(
           `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDB_KEY}&s=${query}&type=movie`
         )
-        .then((response) => setResults(response.data.Search));
+        .then((response) => setResults(response.data.Search))
+        .catch((err) => console.log(err));
     }
   };
 
+  //remove shoppies banner on click
   const dismissBanner = () => {
     setBanner(false);
   };
@@ -59,8 +60,12 @@ export default function ApiSearch(props) {
       </form>
       <div className="lists">
         <header>
-          <h4>Results</h4>
-          <h4>Nominations</h4>
+          <h4>
+            <i class="fas fa-search"></i> Results
+          </h4>
+          <h4>
+            <i class="fas fa-trophy"></i> Nominations
+          </h4>
         </header>
         <div className="results-list">
           {results.map((elem, ind) => (

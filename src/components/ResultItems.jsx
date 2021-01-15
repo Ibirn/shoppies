@@ -7,6 +7,7 @@ export default function ResultItem({
   setNominations,
   nominations,
 }) {
+  //prevent more than 5 nominations or the same movie being nominated multiple times.
   let disableButton;
   if (nominations.includes(info) || nominations.length >= 5) {
     disableButton = true;
@@ -17,9 +18,6 @@ export default function ResultItem({
         <img src={info.Poster} alt={`${info.Title}-poster`}></img>
         <div className="title">{info.Title}</div>
         <div className="year">{info.Year}</div>
-        {/* <button onClick={() => setNominations((prev) => [info, ...prev])}>
-          +
-        </button> */}
         <button
           disabled={disableButton ? true : false}
           className={`add-button`}
