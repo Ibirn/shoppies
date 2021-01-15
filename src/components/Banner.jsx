@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "../styles/bannerStyle.scss";
 
 export default function Banner(props) {
@@ -10,10 +10,7 @@ export default function Banner(props) {
           alt="shoppies-banner"
           src="images/shoppies.png"
         />
-        <div className="modal-text">
-          <br></br>
-          Hello
-        </div>
+        <div className="modal-text">Thank you for your nominations!</div>
       </div>
     </div>
   );

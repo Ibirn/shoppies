@@ -13,7 +13,7 @@ export default function ResultItem({
     disableButton = true;
   }
   return (
-    <div className="search-result slot">
+    <div className="search-result slot" id={`${index}-result`} draggable={true}>
       <div className="item">
         <img src={info.Poster} alt={`${info.Title}-poster`}></img>
         <div className="title">{info.Title}</div>

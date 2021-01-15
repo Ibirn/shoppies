@@ -1,22 +1,29 @@
 .container {
   display: flex;
   flex-direction: column;
-  // border: 1px solid violet;
+  border: 1px solid violet;
+
+  .search-wrapper {
+    border: 1px solid orange;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    align-self: center;
+  }
 
   .lists {
-    // border: 1px solid green;
+    border: 1px solid green;
     display: flex;
     flex-direction: row;
     border-radius: 2rem;
     justify-content: space-evenly;
     flex-flow: wrap;
-
-    header {
-      width: 100%;
-      display: flex;
-      flex-flow: wrap;
-      justify-content: space-around;
-    }
+    background-color: #f6ecf0;
+    margin: 0 2rem;
+  }
+  hr {
+    width: 1rem;
+    border: none;
   }
 
   .search-form {
@@ -26,17 +33,19 @@
 
   .results-list {
     min-height: 1rem;
-    // border: 1px solid red;
+    border: 1px solid red;
     padding-left: 2rem;
     padding-right: 2rem;
     flex: 1;
+    border-radius: inherit;
   }
 
   .nominations {
     min-height: 1rem;
-    // border: 1px solid blue;
+    border: 1px solid yellow;
     padding-left: 2rem;
     padding-right: 2rem;
     flex: 1;
+    border-radius: inherit;
   }
 }
