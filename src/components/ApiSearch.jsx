@@ -4,6 +4,7 @@ import ResultItems from "./ResultItems";
 import Selections from "./Selections";
 import Banner from "./Banner";
 import "../styles/mainStyle.scss";
+import { useCookies } from "react-cookie";
 
 export default function ApiSearch(props) {
   //set default query to empty
@@ -11,6 +12,18 @@ export default function ApiSearch(props) {
   const [results, setResults] = useState([]);
   const [nominations, setNominations] = useState([]);
   const [banner, setBanner] = useState(false);
+  const [cookies, setCookie] = useCookies(["nominations"]);
+
+  // const handleCookie = (newNominations) => {
+  //   setCookie("nominations", JSON.stringify(nominations), { path: "/" });
+  // };
+
+  //a very simple cookie to remember nominations
+  useEffect(() => {
+    if (cookies.nominations) {
+      setNominations([...cookies.nominations]);
+    }
+  }, []);
 
   //query OMDB, search restricted to movies.
   const dbSearch = (e) => {
@@ -66,6 +79,13 @@ export default function ApiSearch(props) {
             <button onClick={(e) => dbSearch(e)}>Search</button>
           </div>
         </form>
+        <button
+          onClick={() =>
+            setCookie("nominations", JSON.stringify(nominations), { path: "/" })
+          }
+        >
+          Save Nominations
+        </button>
       </header>
       <div className="lists">
         <div className="results-list">

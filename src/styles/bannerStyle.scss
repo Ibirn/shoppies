@@ -7,7 +7,6 @@
   margin: auto;
   z-index: 10;
   image-rendering: pixelated;
-  // width: 100%;
   animation: fadeIn ease 2s;
 
   img {
@@ -19,7 +18,7 @@
     flex-direction: column;
     align-items: center;
     background-color: #e3e3e3;
-    width: 60%;
+    width: 50%;
     border: 1px solid grey;
     border-radius: 25px;
     position: relative;
@@ -28,17 +27,6 @@
     height: 10rem;
     padding: 1rem;
   }
-  // .modal-text {
-  //   background-color: #e3e3e3;
-  //   width: 60%;
-  //   border: 1px solid grey;
-  //   border-radius: 25px;
-  //   position: relative;
-  //   top: -5rem;
-  //   z-index: -10;
-  //   height: 10rem;
-  //   padding: 1rem;
-  // }
 }
 
 @keyframes fadeIn {

@@ -1,7 +1,13 @@
+//borders given to objects to see boundaries
+
 .container {
+  // border: 1px solid violet;
   display: flex;
   flex-direction: column;
-  // border: 1px solid violet;
+
+  button {
+    width: fit-content;
+  }
 
   .search-wrapper {
     // border: 1px solid orange;
@@ -13,6 +19,7 @@
     background-color: #d1b280;
     padding: 1rem;
     margin: 1rem 0;
+    align-items: center;
   }
 
   .lists {
@@ -36,8 +43,8 @@
   }
 
   .results-list {
-    min-height: 1rem;
     // border: 1px solid red;
+    min-height: 1rem;
     padding-left: 2rem;
     padding-right: 2rem;
     flex: 1;
@@ -46,8 +53,8 @@
   }
 
   .nominations {
-    min-height: 1rem;
     // border: 1px solid yellow;
+    min-height: 1rem;
     padding-left: 2rem;
     padding-right: 2rem;
     flex: 1;
