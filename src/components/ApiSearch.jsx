@@ -58,34 +58,48 @@ export default function ApiSearch(props) {
   return (
     <div className="container">
       {banner ? <Banner /> : null}
-      <header className="search-wrapper">
-        <h3>
-          <i className="fas fa-film"></i> The Shoppies{" "}
-          <i className="fas fa-film"></i>
-        </h3>
-        <form method="get" className="search-form">
-          <div>
-            <label>Search OMDB: </label>
-            <input
-              type="search"
-              placeholder="Search"
-              results="0"
-              onChange={(e) => {
-                setQuery(e.target.value);
-              }}
-              value={query}
-              required
-            ></input>
-            <button onClick={(e) => dbSearch(e)}>Search</button>
-          </div>
-        </form>
-        <button
-          onClick={() =>
-            setCookie("nominations", JSON.stringify(nominations), { path: "/" })
-          }
-        >
-          Save Nominations
-        </button>
+      <header>
+        <div className="stripe-container">
+          <div className="red"></div>
+          <div className="green"></div>
+          <div className="blue"></div>
+        </div>
+        <div className="search-wrapper">
+          <h3>
+            <i className="fas fa-film"></i> The Shoppies{" "}
+            <i className="fas fa-film"></i>
+          </h3>
+          <form method="get" className="search-form">
+            <div>
+              <label>Search OMDB: </label>
+              <input
+                type="search"
+                placeholder="Search"
+                results="0"
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                }}
+                value={query}
+                required
+              ></input>
+              <button onClick={(e) => dbSearch(e)}>Search</button>
+            </div>
+          </form>
+          <button
+            onClick={() =>
+              setCookie("nominations", JSON.stringify(nominations), {
+                path: "/",
+              })
+            }
+          >
+            Save
+          </button>
+        </div>
+        <div className="stripe-container">
+          <div className="red"></div>
+          <div className="green"></div>
+          <div className="blue"></div>
+        </div>
       </header>
       <div className="lists">
         <div className="results-list">

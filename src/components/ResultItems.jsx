@@ -23,7 +23,7 @@ export default function ResultItem({
           className={`add-button`}
           onClick={() => setNominations((prev) => [info, ...prev])}
         >
-          +
+          <i className="fas fa-plus"></i>
         </button>
       </div>
     </div>

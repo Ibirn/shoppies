@@ -21,7 +21,7 @@ export default function Selections({
         <div className="title">{choice.Title}</div>
         <div className="year">{choice.Year}</div>
         <div className="remove-button" onClick={() => removeNomination()}>
-          -
+          <i className="fas fa-minus"></i>
         </div>
       </div>
     </div>
