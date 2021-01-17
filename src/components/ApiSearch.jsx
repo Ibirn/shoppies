@@ -33,7 +33,7 @@ export default function ApiSearch(props) {
     } else {
       axios
         .get(
-          `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDB_KEY}&s=${query}&type=movie`
+          `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDB_KEY}&s=${query}&type=movie`
         )
         .then((response) => {
           if (response.data.Search !== undefined) {
