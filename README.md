@@ -35,6 +35,7 @@ You will also see any lint errors in the console.
 
 ## Screenshots
 
-!["Show Appointments"](https://github.com/Ibirn/scheduler/blob/master/docs/ShowAppt.png)
-!["Cancel Appointments"](https://github.com/Ibirn/scheduler/blob/master/docs/CancelAppt.png)
-!["Add Appointments"](https://github.com/Ibirn/scheduler/blob/master/docs/EditAppt.png)
+!["Empty Splash"](https://github.com/Ibirn/shoppies/blob/main/docs/splash.png)
+!["Nominations"](https://github.com/Ibirn/shoppies/blob/main/docs/nominations.png)
+!["Error"](https://github.com/Ibirn/shoppies/blob/main/docs/error.png)
+!["Completed"](https://github.com/Ibirn/shoppies/blob/main/docs/complete.png)
