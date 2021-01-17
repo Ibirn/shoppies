@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "../styles/resultStyle.scss";
 
 export default function ResultItem({
@@ -24,7 +24,7 @@ export default function ResultItem({
   }
 
   return (
-    <div className="search-result" id={`${index}-result`} draggable={true}>
+    <div className="search-result" id={`${index}-result`}>
       <div className="item">
         <img src={info.Poster} alt={`${info.Title}-poster`}></img>
         <div className="title">{info.Title}</div>

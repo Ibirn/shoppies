@@ -15,7 +15,7 @@ export default function Selections({
   };
 
   return (
-    <div className="nomination-choice" id={`${index}-result`} draggable={true}>
+    <div className="nomination-choice" id={`${index}-result`}>
       <div className="item">
         <img src={choice.Poster} alt={`${choice.Title}-poster`}></img>
         <div className="title">{choice.Title}</div>
