@@ -3,20 +3,18 @@ import axios from "axios";
 import ResultItems from "./ResultItems";
 import Selections from "./Selections";
 import Banner from "./Banner";
+import ApiError from "./ApiError";
 import "../styles/mainStyle.scss";
 import { useCookies } from "react-cookie";
 
 export default function ApiSearch(props) {
-  //set default query to empty
+  //set defaults to empty
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [nominations, setNominations] = useState([]);
   const [banner, setBanner] = useState(false);
   const [cookies, setCookie] = useCookies(["nominations"]);
-
-  // const handleCookie = (newNominations) => {
-  //   setCookie("nominations", JSON.stringify(nominations), { path: "/" });
-  // };
+  const [error, setError] = useState(false);
 
   //a very simple cookie to remember nominations
   useEffect(() => {
@@ -27,15 +25,25 @@ export default function ApiSearch(props) {
 
   //query OMDB, search restricted to movies.
   const dbSearch = (e) => {
+    //prevent an empty query from causing problems
     e.preventDefault();
     if (query === "") {
+      setError(true);
       setResults([]);
     } else {
       axios
         .get(
           `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDB_KEY}&s=${query}&type=movie`
         )
-        .then((response) => setResults(response.data.Search))
+        .then((response) => {
+          if (response.data.Search !== undefined) {
+            setResults(response.data.Search);
+            setError(false);
+          } else {
+            setError(true);
+            setResults([]);
+          }
+        })
         .catch((err) => console.log(err));
     }
   };
@@ -45,6 +53,7 @@ export default function ApiSearch(props) {
     setBanner(false);
   };
 
+  //listen for and load banner on 5 nominations
   useEffect(() => {
     if (nominations.length === 5) {
       setBanner(true);
@@ -54,6 +63,12 @@ export default function ApiSearch(props) {
       document.removeEventListener("click", dismissBanner);
     };
   }, [nominations]);
+
+  useEffect(() => {
+    if (query) {
+      setError(false);
+    }
+  }, [query]);
 
   return (
     <div className="container">
@@ -82,7 +97,9 @@ export default function ApiSearch(props) {
                 value={query}
                 required
               ></input>
-              <button onClick={(e) => dbSearch(e)}>Search</button>
+              <button className="search-button" onClick={(e) => dbSearch(e)}>
+                Search
+              </button>
             </div>
           </form>
           <button
@@ -106,6 +123,7 @@ export default function ApiSearch(props) {
           <h4>
             <i className="fas fa-search"></i> Results
           </h4>
+          {error ? <ApiError /> : null}
           <div>
             {results.map((elem, ind) => (
               <ResultItems
@@ -114,6 +132,7 @@ export default function ApiSearch(props) {
                 info={elem}
                 setNominations={setNominations}
                 nominations={nominations}
+                results={results}
               />
             ))}
           </div>

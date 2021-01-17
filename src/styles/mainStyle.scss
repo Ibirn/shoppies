@@ -4,6 +4,7 @@
   // border: 1px solid violet;
   display: flex;
   flex-direction: column;
+  color: #3c3c3c;
 
   header {
     align-items: center;
@@ -15,6 +16,7 @@
   }
 
   .red {
+    top: 8vh;
     background-color: #ef7d57;
     width: 100%;
     height: 0.5rem;
@@ -34,22 +36,21 @@
     height: 0.5rem;
   }
 
-  button {
-    width: fit-content;
-  }
-
   .search-wrapper {
     // border: 1px solid orange;
     display: flex;
     flex-direction: column;
     width: fit-content;
-    align-self: center;
     border-radius: 1rem;
     background-color: #f4f4f4;
     padding: 1rem;
     margin: 1rem 0;
     align-items: center;
     border: 0.5rem solid #94b0c2;
+
+    .search-button {
+      margin: 0 0 0 1rem;
+    }
   }
 
   .lists {
