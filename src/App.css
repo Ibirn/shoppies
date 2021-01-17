@@ -5,3 +5,10 @@
 html {
   background-color: #f4f4f4;
 }
+
+footer {
+  position: fixed;
+  right: 0px;
+  bottom: 0px;
+  font-size: small;
+}

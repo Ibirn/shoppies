@@ -5,6 +5,12 @@ function App() {
   return (
     <div className="App">
       <ApiSearch />
+      <footer>
+        Created by Keagan Ricciuti. Github repo available at:{" "}
+        <a href="https://github.com/Ibirn/shoppies">
+          https://github.com/Ibirn/shoppies
+        </a>
+      </footer>
     </div>
   );
 }
